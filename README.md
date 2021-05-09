@@ -10,9 +10,19 @@ This project is a sample redesign screen Netflix casting video on TV using Andro
 * Animation with MotionLayout ✔
 
 # Screenshot
-![netflix_animation_1](netflix_animation_1.jpg)
+- Before
+<img src="netflix_animation_1.jpg" width="250" height="500" />
 
-![netflix_animation_2](netflix_animation_2.jpg)
+- After
+<img src="netflix_animation_2.jpg" width="250" height="500" />
 
 # Git animation
-![netflix_animation](netflix_animation.gif)
+<img src="netflix_animation.gif" width="250" height="500" />
+
+Why I did this screen animation?
+
+A days ago I was looking at the Netflix App and I found a "small animation bug" and then, I decide to re produce the screen using MotionLayout. :)
+Check the bug below in the square icon show twice in the animation.
+
+## Gif BUG
+<img src="netflix_bug_animation.gif" width="250" height="500" />
