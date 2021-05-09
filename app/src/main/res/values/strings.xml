@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">NetflixClone</string>
+    <string name="netflix_animation">Netflix Animation</string>
+
+    <string name="title_series_name">La casa de papel</string>
+    <string name="title_series_episode">T1 : E1 - Episode 1</string>
+    <string name="title_connected">Living Room TV</string>
+
+    <string name="label_progress_video_start">00:40</string>
+    <string name="label_progress_video_end">42:00</string>
+
+    <string name="menu_title_home">Home</string>
+    <string name="menu_title_search">Search</string>
+    <string name="menu_title_download">Downloads</string>
+</resources>

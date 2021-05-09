@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity"
+    android:animateLayoutChanges="true"
+    tools:targetApi="honeycomb"
+    tools:background="@color/black">
+
+    <TextView
+        android:id="@+id/tv_netflix_cone"
+        style="@style/TextDefaultStyleMedium26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/netflix_animation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Content Playing Video on TV -->
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:showPaths="false"
+        android:paddingBottom="@dimen/bottom_nav_height"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layoutDescription="@xml/netflix_scene">
+
+        <View
+            android:id="@+id/viewPlayingOnTV"
+            android:layout_width="match_parent"
+            android:background="@color/black_200"
+            android:layout_height="@dimen/default_view_playing"/>
+
+        <ImageView
+            android:id="@+id/iv_back_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin16"
+            android:layout_marginLeft="@dimen/margin16"
+            android:src="@drawable/ic_replay_30"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewPlayingOnTV"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_play_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin16"
+            android:layout_marginRight="@dimen/margin16"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/viewPlayingOnTV" />
+
+        <ImageView
+            android:id="@+id/iv_down_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:rotation="180"
+            android:src="@drawable/ic_down"
+            app:layout_constraintTop_toTopOf="@+id/viewPlayingOnTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_series_name"
+            style="@style/TextDefaultStyleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_series_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_down_view"
+            tools:text="@string/title_series_name" />
+
+        <!-- Series Episode -->
+        <TextView
+            android:id="@+id/tv_series_episode"
+            style="@style/TextDefaultStyleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_series_episode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_series_name"
+            android:layout_marginTop="@dimen/margin8"
+            tools:text="@string/title_series_episode" />
+
+        <!-- Icon pause series -->
+        <ImageView
+            android:id="@+id/iv_pause_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/marginBigger"
+            android:src="@drawable/ic_pause"/>
+
+        <!-- Icon casting on TV -->
+        <ImageView
+            android:id="@+id/iv_casting"
+            android:layout_width="@dimen/margin16"
+            android:layout_height="@dimen/margin16"
+            android:src="@drawable/ic_baseline_cast_connected_24"
+            app:layout_constraintBottom_toTopOf="@+id/slider_video_progress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/margin22"/>
+
+        <!-- Tv Casting -->
+        <TextView
+            android:id="@+id/tv_connected"
+            style="@style/TextDefaultStyleMedium11sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_connected"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_casting"
+            android:layout_marginTop="@dimen/margin4"
+            tools:text="@string/title_connected" />
+
+        <!-- SeekBar video progress -->
+        <androidx.appcompat.widget.AppCompatSeekBar
+            android:id="@+id/slider_video_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBig"
+            style="@style/SeekBarStyle"
+            android:progress="12"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/tv_minutes_end"
+            app:layout_constraintStart_toEndOf="@+id/tv_minutes_start"
+            app:layout_constraintBottom_toTopOf="@+id/iv_pause_video" />
+
+        <!-- Minutes start -->
+        <TextView
+            android:id="@+id/tv_minutes_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/slider_video_progress"
+            app:layout_constraintBottom_toBottomOf="@+id/slider_video_progress"
+            android:layout_marginLeft="@dimen/margin12"
+            style="@style/TextDefaultStyleLight"
+            tools:text="@string/label_progress_video_start"
+            android:text="@string/label_progress_video_start"
+            android:layout_marginStart="@dimen/margin12" />
+
+        <!-- Minutes start -->
+        <TextView
+            android:id="@+id/tv_minutes_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/label_progress_video_end"
+            android:text="@string/label_progress_video_end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/slider_video_progress"
+            app:layout_constraintBottom_toBottomOf="@+id/slider_video_progress"
+            android:layout_marginEnd="@dimen/margin12"
+            style="@style/TextDefaultStyleLight"
+            android:layout_marginRight="@dimen/margin12" />
+
+        <!-- Series Folder ImageView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_folder_series"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="@dimen/marginBiggest"
+            android:layout_marginEnd="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin16"
+            android:scaleType="centerCrop"
+            app:cardCornerRadius="@dimen/margin4"
+            app:layout_constraintBottom_toTopOf="@+id/slider_video_progress"
+            android:layout_height="@dimen/series_height_size">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_la_casa_papel"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/StyleBottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

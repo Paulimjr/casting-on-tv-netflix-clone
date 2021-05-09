@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Transition
+        motion:constraintSetStart="@+id/start"
+        motion:constraintSetEnd="@+id/end"
+        motion:duration="1200"
+        motion:motionInterpolator="linear">
+
+        <OnSwipe
+            motion:touchAnchorId="@+id/viewPlayingOnTV"
+            motion:touchAnchorSide="top"
+            motion:dragDirection="dragUp" />
+
+
+        <KeyFrameSet>
+
+            <!-- Rotation icon arrow down -->
+            <KeyAttribute
+                android:rotation="180"
+                motion:motionTarget="@id/iv_down_view"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                android:rotation="360"
+                motion:motionTarget="@id/iv_down_view"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                android:rotation="360"
+                motion:motionTarget="@id/iv_down_view"
+                motion:framePosition="100"/>
+
+            <!-- Move Icon back video to center -->
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="pathRelative"
+                motion:motionTarget="@id/iv_back_video"
+                motion:percentY="0.1" />
+
+            <!-- Move Icon Play video to center -->
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="pathRelative"
+                motion:motionTarget="@id/iv_play_video"
+                motion:percentY="-0.1" />
+
+            <!-- Hide/Show icon pause video -->
+            <KeyAttribute
+                motion:motionTarget="@id/iv_pause_video"
+                android:alpha="0"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/iv_pause_video"
+                android:alpha="0"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/iv_pause_video"
+                android:alpha="1"
+                motion:framePosition="100"/>
+
+            <!-- Hide slide video progress -->
+            <KeyAttribute
+                motion:motionTarget="@id/slider_video_progress"
+                android:alpha="0"
+                motion:framePosition="70"/>
+
+            <!-- Video minutes START -->
+            <KeyAttribute
+                motion:motionTarget="@id/tv_minutes_start"
+                android:alpha="0"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_minutes_start"
+                android:alpha="0"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_minutes_start"
+                android:alpha="1"
+                motion:framePosition="100"/>
+
+            <!-- Video minutes END -->
+            <KeyAttribute
+                motion:motionTarget="@id/tv_minutes_end"
+                android:alpha="0"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_minutes_end"
+                android:alpha="0"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_minutes_end"
+                android:alpha="1"
+                motion:framePosition="100"/>
+
+            <!-- Video minutes VIDEO FOLDER -->
+            <KeyAttribute
+                motion:motionTarget="@id/image_folder_series"
+                android:alpha="0"
+                android:scaleX="1.3"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/image_folder_series"
+                android:alpha="0"
+                android:scaleX="1.2"
+                motion:framePosition="75"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/image_folder_series"
+                android:scaleX="1.1"
+                android:alpha="0.5"
+                motion:framePosition="95"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/image_folder_series"
+                android:alpha="1"
+                android:scaleX="1"
+                motion:framePosition="100"/>
+
+            <!-- Series name on top -->
+            <KeyAttribute
+                motion:motionTarget="@id/tv_series_name"
+                android:scaleX="1"
+                android:scaleY="1"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_series_name"
+                android:scaleX="1"
+                android:scaleY="1"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_series_name"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                motion:framePosition="100"/>
+
+            <!-- Text series episode -->
+            <KeyAttribute
+                motion:motionTarget="@id/tv_series_episode"
+                android:alpha="0"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_series_episode"
+                android:alpha="0"
+                motion:framePosition="80"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_series_episode"
+                android:alpha="1"
+                motion:framePosition="100"/>
+
+            <!-- TV connected -->
+            <KeyAttribute
+                motion:motionTarget="@id/tv_connected"
+                android:alpha="0"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_connected"
+                android:alpha="0"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/tv_connected"
+                android:alpha="1"
+                motion:framePosition="100"/>
+
+            <!-- Tv casting -->
+            <KeyAttribute
+                motion:motionTarget="@id/iv_casting"
+                android:alpha="0"
+                motion:framePosition="0"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/iv_casting"
+                android:alpha="0"
+                motion:framePosition="50"/>
+
+            <KeyAttribute
+                motion:motionTarget="@id/iv_casting"
+                android:alpha="1"
+                motion:framePosition="100"/>
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+
+        <!-- main content MotionLayout -->
+        <Constraint
+            android:id="@+id/viewPlayingOnTV"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_view_playing"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent">
+
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="@color/black_200"/>
+
+        </Constraint>
+
+        <!-- back 30sg imageView -->
+        <Constraint
+            android:id="@+id/iv_back_video"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@+id/viewPlayingOnTV"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="@dimen/margin16"
+            android:layout_marginStart="@dimen/margin16"/>
+
+        <!-- pause video imageView -->
+        <Constraint
+            android:id="@+id/iv_pause_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/marginBiggest" />
+
+        <!-- casting video imageView -->
+        <Constraint
+            android:id="@+id/iv_casting"
+            android:layout_width="@dimen/margin16"
+            android:layout_height="@dimen/margin16"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/marginBig"
+            motion:layout_constraintBottom_toTopOf="@+id/slider_video_progress">
+
+            <CustomAttribute
+                motion:attributeName="ColorFilter"
+                motion:customColorValue="@color/white" />
+
+        </Constraint>
+
+        <!-- connect textView -->
+        <Constraint
+            android:id="@+id/tv_connected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin4"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_casting">
+
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/white" />
+
+        </Constraint>
+
+        <!-- Progress Video -->
+        <Constraint
+            android:id="@+id/slider_video_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBig"
+            style="@style/SeekBarStyle"
+            android:progress="12"
+            android:alpha="0"
+            motion:layout_constraintEnd_toStartOf="@+id/tv_minutes_end"
+            motion:layout_constraintStart_toEndOf="@+id/tv_minutes_start"
+            motion:layout_constraintBottom_toTopOf="@+id/iv_pause_video"/>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+
+        <!-- main content MotionLayout -->
+        <Constraint
+            android:id="@+id/viewPlayingOnTV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent">
+
+            <CustomAttribute
+                motion:attributeName="backgroundColor"
+                motion:customColorValue="@color/black_200" />
+
+        </Constraint>
+
+        <!-- back 30sg imageView -->
+        <Constraint
+            android:id="@+id/iv_back_video"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@+id/iv_pause_video"
+            motion:layout_constraintBottom_toBottomOf="@+id/iv_pause_video"
+            android:layout_width="wrap_content"
+            motion:layout_constraintEnd_toStartOf="@+id/iv_pause_video"
+            android:layout_marginEnd="@dimen/margin16"/>
+
+        <!-- play video imageView -->
+        <Constraint
+            android:id="@+id/iv_play_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="@+id/iv_pause_video"
+            motion:layout_constraintBottom_toBottomOf="@+id/iv_pause_video"
+            android:layout_marginStart="@dimen/margin16"
+            motion:layout_constraintStart_toEndOf="@+id/iv_pause_video"/>
+
+        <!-- pause video imageView -->
+        <Constraint
+            android:id="@+id/iv_pause_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/marginBigger" />
+
+        <!-- Progress Video -->
+        <Constraint
+            android:id="@+id/slider_video_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginBig"
+            style="@style/SeekBarStyle"
+            android:progress="12"
+            android:alpha="1"
+            motion:layout_constraintEnd_toStartOf="@+id/tv_minutes_end"
+            motion:layout_constraintStart_toEndOf="@+id/tv_minutes_start"
+            motion:layout_constraintBottom_toTopOf="@+id/iv_pause_video" />
+
+        <!-- Icon back arrow -->
+        <Constraint
+            android:id="@+id/iv_down_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/margin16" />
+
+        <!-- casting video imageView -->
+        <Constraint
+            android:id="@+id/iv_casting"
+            android:layout_width="@dimen/margin16"
+            android:layout_height="@dimen/margin16"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="@dimen/marginBig"
+            motion:layout_constraintBottom_toTopOf="@+id/slider_video_progress">
+
+            <CustomAttribute
+                motion:attributeName="ColorFilter"
+                motion:customColorValue="@color/blue_500" />
+
+        </Constraint>
+
+        <!-- connect textView -->
+        <Constraint
+            android:id="@+id/tv_connected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="@dimen/margin4"
+            motion:layout_constraintTop_toBottomOf="@+id/iv_casting">
+
+            <CustomAttribute
+                motion:attributeName="textColor"
+                motion:customColorValue="@color/blue_500" />
+
+        </Constraint>
+
+    </ConstraintSet>
+
+</MotionScene>
